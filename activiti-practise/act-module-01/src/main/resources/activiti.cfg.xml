@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="databaseType" value="mysql" />
+
+        <!--
+        生命数据库脚本更新策略
+            false: 表示什么都不做
+            true: 当act表不存在时自动创建，jar版本与数据库内记录的版本不一致时自动执行升级脚本，并记录升级过程
+            create-drop: 创建引擎时初始化脚本，引擎销毁时执行删除脚本
+       -->
+        <property name="databaseSchemaUpdate" value= "true"/>
+
+        <!--
+          是否启用作业执行功能，默认为false。如果设置为true,会不断刷新作业表，存在作业就触发
+        -->
+        <property name="jobExecutorActivate" value= "false"/>
+
+        <!--
+        记录历史的级别，默认为audit
+            none: 不保存任何历史记录，可提高系统性能
+            activity: 保存所有流程实例、任务、活动信息
+            audit: 保存所有流程实例、任务、活动、表单属性。
+            full: 完整的历史记录，包含audit以外还有其它记录，如流程变量、表单属性等
+        -->
+        <property name="history" value= "audit"/>
+
+        <property name="jdbcDriver" value="com.mysql.cj.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/act-test?characterEncoding=UTF-8&amp;
+        useUnicode=true&amp;useSSL=false&amp;tinyInt1isBit=false&amp;allowPublicKeyRetrieval=true&amp;
+        serverTimezone=UTC&amp;nullCatalogMeansCurrent=true" />
+        <property name="jdbcUsername" value="root" />
+        <property name="jdbcPassword" value="root" />
+
+    </bean>
+</beans>
