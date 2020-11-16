@@ -8,8 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Description
- * @Author lzg
+ * @Description 初始化Activiti表测试
+ * @Author fn2xn
  * @date 2020/11/16 11:24
  */
 public class InitProcessEngineTest {
